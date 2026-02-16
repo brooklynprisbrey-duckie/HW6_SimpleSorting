@@ -51,5 +51,11 @@ bool Vial::transfer(Vial& destination) {
 		cout << "The contents do not match." << endl;
 		return false;
 	}
-	return true;
+	else {
+		destination.vContents[destination.vFilled] = vContents[vFilled - 1];
+		destination.vFilled += 1;
+		vContents[vFilled - 1] = 0;
+		vFilled -= 1;
+		return true;
+	}
 };
