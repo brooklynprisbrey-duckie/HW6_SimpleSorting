@@ -11,7 +11,7 @@ private:
 public:
 	Vial();
 	Vial(char contents[], int filling);
-	Vial(char c1, char c2, char c3, char c4, int filling);
+
 	bool add(char content);
 	void display();
 	bool isComplete();

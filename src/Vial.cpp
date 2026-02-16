@@ -11,11 +11,6 @@ Vial::Vial(char contents[], int filling) {
 	vFilled = filling;
 };
 
-Vial::Vial(char c1, char c2, char c3, char c4, int filling) {
-	vContents[0] = c1; vContents[1] = c2; vContents[2] = c3; vContents[4] = c4;
-	vFilled = filling;
-};
-
 bool Vial::add(char content) {
 	if (vFilled < sizeof(vContents)) {
 		vContents[vFilled] = content;
@@ -28,8 +23,33 @@ bool Vial::add(char content) {
 
 void Vial::display() {
 	cout << "(" << left << setw(4) << vContents << "]" << endl;
+	return;
 };
 
-bool isComplete();
-void setLabel(int label);
-bool transfer(Vial& destination);
+bool Vial::isComplete() {
+	for (int i = 0; i < sizeof(vContents); i++) {
+		if (vContents[0] != vContents[i]) { return false; }
+	}
+	return true;
+};
+
+void Vial::setLabel(int label) {
+	vLabel = label;
+	return;
+};
+
+bool Vial::transfer(Vial& destination) {
+	if (vFilled == 0) {
+		cout << "This vial is empty." << endl;
+		return false;
+	}
+	else if (destination.vFilled == 4) {
+		cout << "That vial is full." << endl;
+		return false;
+	}
+	else if (vContents[vFilled - 1] != destination.vContents[destination.vFilled - 1]) {
+		cout << "The contents do not match." << endl;
+		return false;
+	}
+	return true;
+};
