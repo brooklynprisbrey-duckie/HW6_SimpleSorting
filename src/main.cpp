@@ -88,9 +88,9 @@ int main() {
 
 	Vial* viArray[6] = { &via1, &via2, &via3, &via4, &via5, &via6 };
 
-	bool sorting = true;
-
+	int turns = 0;
 	do {
+		cout << endl << turns << " turns" << endl;
 		cout << "1: ";
 		via1.display();
 		cout << "2: ";
@@ -110,9 +110,17 @@ int main() {
 		int tTo = userValidation();
 
 		validToVial(tFrom, viArray).transfer(validToVial(tTo, viArray));
+		turns++;
 
-		sorting = (!via1.isComplete() && !via2.isComplete());
-	} while (sorting);
+	} while (!(via1.isComplete() && via2.isComplete() && via3.isComplete()
+		&& via4.isComplete() && via5.isComplete() && via6.isComplete()));
+
+	via1.display();
+	via2.display();
+	via3.display();
+	via4.display();
+	via5.display();
+	via6.display();
 
 	return 0;
 }
