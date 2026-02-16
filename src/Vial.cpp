@@ -47,7 +47,8 @@ bool Vial::transfer(Vial& destination) {
 		cout << "That vial is full." << endl;
 		return false;
 	}
-	else if (vContents[vFilled - 1] != destination.vContents[destination.vFilled - 1]) {
+	else if (vContents[vFilled - 1] != destination.vContents[destination.vFilled - 1]
+		&& destination.vContents[destination.vFilled] != 0) {
 		cout << "The contents do not match." << endl;
 		return false;
 	}
